@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h3>Informe os dados do desistente</h3>
+        <label for="txtName">Nome:
+            <input type="text" name="txtName" placeholder="Nome Completo"/>
+        </label>
+    
+        <label for="id">Identificação
+            <input type="text" placeholder="SC0000000" id="id"/>
+        </label>
+    
+        <label for="txtReason">Razão: 
+            <input type="text" name="txtReason" placeholder="Razão da desistência"/>
+        </label>
+
+        <input type="submit" value="Arregou" id="bt1"/>
     </div>
   );
 }
