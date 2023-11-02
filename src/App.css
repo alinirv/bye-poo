@@ -1,4 +1,4 @@
-body {
+Body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,14 +6,14 @@ body {
   margin: 0;
 }
 
-.App {
+.Body {
   width: 300px;
   padding: 50px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.781);
 }
 
-.App input[type="text"] {
+.Body input[type="text"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -21,7 +21,7 @@ body {
   border-radius: 5px;
 }
 
-.App input[type="submit"] {
+.Body input[type="submit"] {
   width: 100%;
   padding: 10px;
   background-color: #4caf50;
@@ -31,6 +31,6 @@ body {
   cursor: pointer;
 }
 
-.App input[type="submit"]:hover {
+.Body input[type="submit"]:hover {
   background-color: #45a049;
 }

@@ -1,0 +1,9 @@
+.MainBody{
+  margin-top: 100px;
+  width: 500px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.781);
+  text-align: center;
+}

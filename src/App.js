@@ -1,8 +1,10 @@
-import './App.css'
-import RegisterPage from './pages/RegisterPage';
+import DropOutPage from './pages/DropOutPage';
+//import RegisterPage from './pages/RegisterPage';
+
 
 function App() {
-    return(<RegisterPage/>)
+    return(<DropOutPage/>)
+    //return(<RegisterPage/>)
       
 }
 
