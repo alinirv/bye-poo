@@ -17,7 +17,7 @@ function DropOutPage(){
             <p>...</p>
             <p>...</p>
             <p>...</p>
-            <InputField type="submit" value="Lista de desistentes" id="bt2" onClick={goToRegisterPage}/>
+            <InputField type="submit" value="Registrar desistente" id="bt2" onClick={goToRegisterPage}/>
         </div>
     )
 }
