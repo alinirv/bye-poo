@@ -11,8 +11,10 @@ function RegistrationPage(){
     const goToDropOutPage = () => navigate('/Desistentes')
 
     return(
-        <div className={ registrationPageStyle.RegistrationPage }>
-            <h3>Informe os dados do desistente</h3>
+        <section className={ registrationPageStyle.RegistrationPage }>
+            <header>
+                <h3>Informe os dados do desistente</h3>
+            </header>
             
             <InputField id="txtName" label="Nome: " type="text" placeholder="Nome completo" />
             <InputField id="txtId" label="Identificação: " type="text" placeholder="SC0000000" />
@@ -22,7 +24,7 @@ function RegistrationPage(){
             <br/>
             <br/>
             <SubmitButton id="bt2" description="Lista de desistentes" onClick={ goToDropOutPage } />
-        </div>
+        </section>
     )
 }
 
