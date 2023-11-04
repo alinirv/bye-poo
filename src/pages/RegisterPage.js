@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router'
-import '../App.css'
+import '../App/App.css'
 import InputField from "../components/InputField"
 
 
