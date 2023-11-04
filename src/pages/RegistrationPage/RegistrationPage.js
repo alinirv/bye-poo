@@ -17,7 +17,9 @@ function RegistrationPage(){
             <Form id='registrationForm'>    
                 <InputField id="txtName" label="Nome: " type="text" placeholder="Nome completo" />
                 <InputField id="txtId" label="Identificação: " type="text" placeholder="SC0000000" />
-                <SelectionField id="txtReason" label="Razão" placeholder="Razão da desistência" />
+                <SelectionField id="txtReason" label="Razão" placeholder="Razão da desistência" options={[
+                    { value: 'other', description: 'Outra' }
+                ]} />
             </Form>
             <FormControl formId='registrationForm' buttonDescription='Arregou' />
             
