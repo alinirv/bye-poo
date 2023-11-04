@@ -1,0 +1,8 @@
+.FormControl {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.FormControl:last-child {
+    margin-bottom: 0;
+}

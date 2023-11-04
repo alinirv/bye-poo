@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router";
 import styles from "../components/DropOut.module.css"
-import InputField from "../components/InputField";
-import SubmitButton from "../components/SubmitButton/SubmitButton";
+import { SubmitButton } from "../components/Form/";
 import PageHeader from "../components/PageHeader";
 
 function DropOutPage(){
