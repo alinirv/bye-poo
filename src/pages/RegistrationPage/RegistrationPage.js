@@ -4,6 +4,7 @@ import registrationPageStyle from './RegisterPage.module.css'
 
 import InputField from '../../components/InputField'
 import SubmitButton from '../../components/SubmitButton/SubmitButton'
+import PageHeader from '../../components/PageHeader'
 
 
 function RegistrationPage(){
@@ -12,9 +13,7 @@ function RegistrationPage(){
 
     return(
         <section className={ registrationPageStyle.RegistrationPage }>
-            <header>
-                <h3>Informe os dados do desistente</h3>
-            </header>
+            <PageHeader title='Registro de desistentes' />
             
             <InputField id="txtName" label="Nome: " type="text" placeholder="Nome completo" />
             <InputField id="txtId" label="Identificação: " type="text" placeholder="SC0000000" />

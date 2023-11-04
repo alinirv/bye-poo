@@ -1,0 +1,11 @@
+.Header {
+    width: 100%;
+}
+
+.Header h3 {
+    width: 100%;
+    
+    font-size: 14pt;
+    text-align: center;
+    text-transform: capitalize;
+}

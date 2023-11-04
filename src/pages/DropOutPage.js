@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import styles from "../components/DropOut.module.css"
 import InputField from "../components/InputField";
 import SubmitButton from "../components/SubmitButton/SubmitButton";
+import PageHeader from "../components/PageHeader";
 
 function DropOutPage(){
     const navigate = useNavigate();
@@ -11,7 +12,7 @@ function DropOutPage(){
 
     return(
         <div className={styles.MainBody}>
-            <h1>Lista de desistentes</h1>
+            <PageHeader title="Lista de desistentes" />
             <p>...</p>
             <p>...</p>
             <p>...</p>
