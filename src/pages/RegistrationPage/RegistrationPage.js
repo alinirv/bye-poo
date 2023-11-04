@@ -2,17 +2,17 @@ import { useNavigate } from 'react-router'
 
 import InputField from '../../components/InputField'
 
-import registerPageStyle from './RegisterPage.module.css'
+import registrationPageStyle from './RegisterPage.module.css'
 
 
-function RegisterPage(){
+function RegistrationPage(){
     const navigate = useNavigate()
     const goToDropOutPage = () => {
         navigate('/Desistentes')
     }
 
     return(
-        <div className={ registerPageStyle.Body }>
+        <div className={ registrationPageStyle.RegistrationPage }>
         <h3>Informe os dados do desistente</h3>
             <InputField id="txtName" type="text" placeholder="Nome completo" label="Nome: " />
             <InputField id="txtId" type="text" placeholder="SC0000000" label="Identificação: " />
@@ -23,4 +23,4 @@ function RegisterPage(){
     )
 }
 
-export default RegisterPage
+export default RegistrationPage

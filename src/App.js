@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import RegisterPage from './pages/RegisterPage'
+import RegisterPage from './pages/RegistrationPage'
 import DropOutPage from "./pages/DropOutPage"
 
 
