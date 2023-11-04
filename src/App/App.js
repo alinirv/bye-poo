@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import RegisterPage from './pages/RegisterPage';
-import DropOutPage from "./pages/DropOutPage";
+import RegisterPage from '../RegisterPage';
+import DropOutPage from "../DropOutPage";
 
 
 function App() {
