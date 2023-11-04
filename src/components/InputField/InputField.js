@@ -1,3 +1,5 @@
+import inpurtFieldStyle from './InputField.module.css'
+
 export default function InputField({ id, label, placeholder, type, value, onClick}) {
     return (
         <>
