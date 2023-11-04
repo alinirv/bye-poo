@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router'
 
-import InputField from '../../components/InputField'
-
 import registrationPageStyle from './RegisterPage.module.css'
+
+import InputField from '../../components/InputField'
+import SubmitButton from '../../components/SubmitButton/SubmitButton'
 
 
 function RegistrationPage(){
@@ -17,10 +18,10 @@ function RegistrationPage(){
             <InputField id="txtId" label="Identificação: " type="text" placeholder="SC0000000" />
             <InputField id="txtReason" type="text" label="Razão" placeholder="Razão da desistência" />
             
-            <InputField id="bt1" type="submit" value="Arregou" />
+            <SubmitButton id="bt1" description="Arregou" />
             <br/>
             <br/>
-            <InputField id="bt2" type="submit" value="Lista de desistentes" onClick={ goToDropOutPage } />
+            <SubmitButton id="bt2" description="Lista de desistentes" onClick={ goToDropOutPage } />
         </div>
     )
 }

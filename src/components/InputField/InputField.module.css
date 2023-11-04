@@ -5,17 +5,3 @@ input[type="text"] {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
-input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #45a049;
-}
