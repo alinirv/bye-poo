@@ -7,18 +7,20 @@ import registrationPageStyle from './RegisterPage.module.css'
 
 function RegistrationPage(){
     const navigate = useNavigate()
-    const goToDropOutPage = () => {
-        navigate('/Desistentes')
-    }
+    const goToDropOutPage = () => navigate('/Desistentes')
 
     return(
         <div className={ registrationPageStyle.RegistrationPage }>
-        <h3>Informe os dados do desistente</h3>
-            <InputField id="txtName" type="text" placeholder="Nome completo" label="Nome: " />
-            <InputField id="txtId" type="text" placeholder="SC0000000" label="Identificação: " />
-            <InputField id="txtReason" type="text" placeholder="Razão da desistência" label="Razão" />
-            <InputField type="submit" value="Arregou" id="bt1"/><br/> <br/>
-            <InputField type="submit" value="Lista de desistentes" id="bt2" onClick={ goToDropOutPage }/>
+            <h3>Informe os dados do desistente</h3>
+            
+            <InputField id="txtName" label="Nome: " type="text" placeholder="Nome completo" />
+            <InputField id="txtId" label="Identificação: " type="text" placeholder="SC0000000" />
+            <InputField id="txtReason" type="text" label="Razão" placeholder="Razão da desistência" />
+            
+            <InputField id="bt1" type="submit" value="Arregou" />
+            <br/>
+            <br/>
+            <InputField id="bt2" type="submit" value="Lista de desistentes" onClick={ goToDropOutPage } />
         </div>
     )
 }
