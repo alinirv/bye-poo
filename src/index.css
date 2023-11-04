@@ -5,6 +5,10 @@
   padding: 0;
 }
 
+:root {
+  --placeholder-color: rgb(125, 125, 125)
+}
+
 body {
   margin: 0;
   

@@ -1,13 +1,13 @@
-.InputField {
+.SelectionField {
     width: 100%;
     margin-bottom: 1em;
 }
 
-.InputField:last-child {
+.SelectionField:last-child {
     margin-bottom: 0;
 }
 
-.Input {
+.Selection {
     width: 100%;
 
     margin-top: .5em;
@@ -15,8 +15,14 @@
 
     border: 1px solid #ccc;
     border-radius: 5px;
+
+    background-color: white;
 }
 
-.InputField ::placeholder {
+.Placeholder {
     color: var(--placeholder-color);
+}
+
+.Option {
+    color: black
 }
