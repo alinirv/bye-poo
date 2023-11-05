@@ -41,6 +41,8 @@ export const fetchAnswerToReason = (reason) => {
 
         case 'Não estava muito bem':
         case 'Ansiedade':
+            answer = { type: 'text', message: 'Pois saiba que você é fod@! Não há nada que possa te parar, nem mesmo POO!' }
+            break
         case 'Prefiro não responder':
         default:
             answer = {
