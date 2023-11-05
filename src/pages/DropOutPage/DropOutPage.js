@@ -6,6 +6,7 @@ import { SubmitButton } from '../../components/Form'
 import PageHeader from '../../components/PageHeader'
 import { useState } from 'react'
 import StudentsPlaceholder from '../../components/StudentsPlaceholder'
+import StudentsTable from '../../components/StudentsTable'
 
 function DropOutPage(){
     const [ students, setStudents ] = useState([])
@@ -26,7 +27,8 @@ function DropOutPage(){
                 <PageHeader title="Lista de desistentes" /> 
 
                 {
-                    !hasStudents() && <StudentsPlaceholder placeholder='Não há desistentes cadastrados ainda!' />
+                    !hasStudents() ? <StudentsPlaceholder placeholder='Não há desistentes cadastrados ainda!' /> :
+                        <StudentsTable students={ students } />
                 }
             </div>
         </div>

@@ -1,0 +1,15 @@
+.StudentsTable {
+    width: 100%;
+
+    margin: 2em 0;
+    border-collapse: collapse;
+}
+
+.ColoredRow {
+    background-color: rgba(0, 200, 0, .5);
+    color: white
+}
+
+.StudentsTable:last-child {
+    margin-bottom: 0;
+}
