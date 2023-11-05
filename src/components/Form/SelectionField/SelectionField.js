@@ -2,7 +2,7 @@ import { useState } from 'react'
 import selectionFieldStyle from './SelectionField.module.css'
 import { PlaceholderOption, Option } from './Option'
 
-function SelectionField({ id, label, placeholder, options, onChange }) {
+function SelectionField({ id, label, placeholder, options, onChange, required }) {
     const [ selectColor, setSelectColor ] = useState({ color: "var(--placeholder-color)" })
 
     const handleSelectionChange = (event) => {
@@ -19,6 +19,7 @@ function SelectionField({ id, label, placeholder, options, onChange }) {
                 className={ selectionFieldStyle.Selection } 
                 name={ id } style={ selectColor } 
                 onChange={ handleSelectionChange }
+                required={ required }
             >
                 <PlaceholderOption placeholder={ placeholder } />
                 { 

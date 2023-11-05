@@ -21,19 +21,19 @@ function RegistrationForm() {
         <>
             <Form id='registrationForm'>    
                 <InputField id="txtName" label="Nome: " type="text" placeholder="Nome completo" value={ nameField }
-                    onChange={ handleNameChange } />
+                    onChange={ handleNameChange } required={ true }/>
 
                 <InputField id="txtId" label="Identificação: " type="text" placeholder="SC0000000" value={ idField }
-                    onChange={ handleIdChange } />
+                    onChange={ handleIdChange } required={true} />
 
-                <SelectionField id="txtReason" label="Razão" placeholder="Razão da desistência" options={[
+                <SelectionField id="txtReason" label="Razão:" placeholder="Razão da desistência" options={[
                     { value: 'other', description: 'Outra' }
-                ]} onChange={ handleReasonChange } />
+                ]} onChange={ handleReasonChange } required={ true }/>
 
                 { 
                     hasCustomReason() && 
                         <InputField id='customReason' type='text' placeholder='Outra razão' value={ customReason } 
-                            onChange={ handleCustomReasonChange }/> 
+                            onChange={ handleCustomReasonChange } required={ hasCustomReason() }/> 
                 }
             </Form>
             <FormControl formId='registrationForm' buttonDescription='Arregou' />
