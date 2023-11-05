@@ -19,7 +19,7 @@ export const fetchReasons = () => {
         { value: 'Ansiedade', description: '"When our momma sang us to sleep, but now we\'re stressed out"'},
         { value: 'Prefiro não responder', description: 'Prefino não responder'},
         { value: 'O que é i++?', description: 'O que é i++?'},
-        { value: 'O Prof. Lucas não vai pro céu', description: 'Arreguei'},
+        { value: 'O Prof. Lucas não vai pro céu', description: 'O Prof. Lucas não vai pro céu'},
     ]
 }
 
