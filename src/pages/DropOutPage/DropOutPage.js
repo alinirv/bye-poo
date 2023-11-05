@@ -4,9 +4,10 @@ import styles from './DropOut.module.css'
 
 import { SubmitButton } from '../../components/Form'
 import PageHeader from '../../components/PageHeader'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import StudentsPlaceholder from '../../components/StudentsPlaceholder'
 import StudentsTable from '../../components/StudentsTable'
+import { fetchAllStudents } from '../../api/fetchStudents'
 
 function DropOutPage(){
     const [ students, setStudents ] = useState([])
@@ -16,6 +17,10 @@ function DropOutPage(){
     const goToRegistrationPage = () => navigate('/')
 
     const hasStudents = () => students.length > 0
+
+    useEffect(() => {
+        setStudents(fetchAllStudents())
+    }, [])
 
     return(
         <div className={ `${styles.DropOutPage} ${hasStudents() ? styles.FilledDropOutPage : styles.EmptyDropOutPage}` }>
