@@ -1,0 +1,14 @@
+.StudentsPlaceholder {
+    width: 100%;
+    
+    margin: 1.5em 0;
+    padding: 1.5em;
+}
+
+.StudentsPlaceholder p {
+    width: 100%;
+
+    text-align: center;
+
+    color: var(--placeholder-color);
+}
