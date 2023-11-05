@@ -1,12 +1,17 @@
+import { useState } from 'react'
 import dialogStyle from './Dialog.module.css'
 
-function Dialog({ children, isActive }) {
-    if (!isActive) return <></>
+function Dialog({ children, isActive, setIsActive }) {
+    const closeDialog = () => setIsActive(false)
+
+    if (!isActive)
+        return <></>
+
     return (
-        <div className={ dialogStyle.DialogBackground }>
+        <div className={ dialogStyle.DialogBackground } onClick={ closeDialog } >
             <div className={ dialogStyle.Dialog }>
                 <nav className={ dialogStyle.DialogNav }>
-                    <button>Sair</button>
+                    <button onClick={ closeDialog } >Sair</button>
                 </nav>
                 <div className={ dialogStyle.DialogMessage }>
                     { children }
