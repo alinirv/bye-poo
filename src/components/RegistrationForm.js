@@ -1,12 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import Form, { InputField, SelectionField, FormControl } from './Form'
+import Dialog from './Dialog'
+import { fetchAnswerToReason, fetchReasons } from '../api/fetchStudents'
 
 function RegistrationForm() {
     const [ nameField, setNameField ] = useState('')
     const [ idField, setIdField ] = useState('')
     const [ reasonField, setReasonField ] = useState('')
     const [ customReason, setCustomReason ] = useState('')
+    const [ showDialog, setShowDialog ] = useState(false)
+    const [ dialogMessage, setDialogMessage ] = useState('')
+    const [ reasons, setReasons ] = useState([])
 
     const handleNameChange = (event) => setNameField(event.target.value)
 
@@ -18,6 +23,24 @@ function RegistrationForm() {
 
     const hasCustomReason = () => reasonField === 'other'
 
+    const handleSubmit = () => {
+        const reason = hasCustomReason() ? customReason : reasonField
+
+        if (idField === '' || idField === '' || reason === '')
+            return
+
+        const student = { id: idField, name: nameField, reason: reason }
+        
+        setShowDialog(true)
+        setDialogMessage(fetchAnswerToReason(student.reason))
+    }
+
+    useEffect(() => {
+        const fetchedReasons = fetchReasons()
+        fetchedReasons.push({ value: 'other', description: 'Outra' })
+        setReasons(fetchedReasons)
+    }, [])
+
     return (
         <>
             <Form id='registrationForm'>    
@@ -27,9 +50,9 @@ function RegistrationForm() {
                 <InputField id='txtId' label='Identificação:' type='text' placeholder='SC0000000' value={ idField }
                     onChange={ handleIdChange } required={ true } />
 
-                <SelectionField id='txtReason' label='Razão:' placeholder='Razão da desistência' options={[
-                    { value: 'other', description: 'Outra' }
-                ]} onChange={ handleReasonChange } required={ true }/>
+                <SelectionField id='txtReason' label='Razão:' placeholder='Razão da desistência' options={
+                    reasons
+                } onChange={ handleReasonChange } required={ true }/>
 
                 { 
                     hasCustomReason() && 
@@ -37,7 +60,8 @@ function RegistrationForm() {
                             onChange={ handleCustomReasonChange } required={ hasCustomReason() }/> 
                 }
             </Form>
-            <FormControl formId='registrationForm' buttonDescription='Arregou' />
+            <FormControl formId='registrationForm' buttonDescription='Arregou' onSubmit={ handleSubmit } />
+            <Dialog isActive={ showDialog } setIsActive={ setShowDialog } >{ dialogMessage }</Dialog>
         </>
     )
 }
