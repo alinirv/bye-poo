@@ -14,12 +14,18 @@ function SelectionField({ id, label, placeholder, options, onChange }) {
     return (
         <div className={ selectionFieldStyle.SelectionField }>
             <label htmlFor={ id }>{ label }</label>
-            <select id={ id } className={ selectionFieldStyle.Selection } name={ id } style={ selectColor } 
-                onChange={ handleSelectionChange }>
+            <select 
+                id={ id } 
+                className={ selectionFieldStyle.Selection } 
+                name={ id } style={ selectColor } 
+                onChange={ handleSelectionChange }
+            >
                 <PlaceholderOption placeholder={ placeholder } />
-                { options.map((option, index) => 
-                    <Option key={ index + 1 } value={ option.value } description={ option.description } />
-                )}
+                { 
+                    options.map((option, index) => 
+                        <Option key={ index + 1 } value={ option.value } description={ option.description } />
+                    )
+                }
             </select>
         </div>
     )

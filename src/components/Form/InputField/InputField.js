@@ -4,8 +4,15 @@ export default function InputField({ id, label, placeholder, type, value, onChan
     return (
         <div className={ inputFieldStyle.InputField }>
             { label && <label htmlFor={ id }>{ label }</label>}
-            <input type={ type } id={ id } className={ inputFieldStyle.Input } 
-                placeholder={ placeholder } name={ id } value={ value } onChange={ onChange }/>
+            <input 
+                type={ type } 
+                id={ id } 
+                className={ inputFieldStyle.Input } 
+                placeholder={ placeholder } 
+                name={ id } 
+                value={ value } 
+                onChange={ onChange }
+            />
         </div>
     )
 }

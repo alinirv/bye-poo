@@ -22,14 +22,18 @@ function RegistrationForm() {
             <Form id='registrationForm'>    
                 <InputField id="txtName" label="Nome: " type="text" placeholder="Nome completo" value={ nameField }
                     onChange={ handleNameChange } />
+
                 <InputField id="txtId" label="Identificação: " type="text" placeholder="SC0000000" value={ idField }
                     onChange={ handleIdChange } />
+
                 <SelectionField id="txtReason" label="Razão" placeholder="Razão da desistência" options={[
                     { value: 'other', description: 'Outra' }
                 ]} onChange={ handleReasonChange } />
-                { hasCustomReason() && 
-                    <InputField id='customReason' type='text' placeholder='Outra razão' value={ customReason } 
-                        onChange={ handleCustomReasonChange }/> 
+
+                { 
+                    hasCustomReason() && 
+                        <InputField id='customReason' type='text' placeholder='Outra razão' value={ customReason } 
+                            onChange={ handleCustomReasonChange }/> 
                 }
             </Form>
             <FormControl formId='registrationForm' buttonDescription='Arregou' />
