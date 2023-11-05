@@ -12,17 +12,23 @@ function DropOutPage(){
 
     const navigate = useNavigate();
     
-    const goToRegisterPage = () => navigate('/')
+    const goToRegistrationPage = () => navigate('/')
+
+    const hasStudents = () => students.length > 0
 
     return(
-        <div className={styles.MainBody}>
-            <PageHeader title="Lista de desistentes" />
+        <div className={ `${styles.DropOutPage} ${hasStudents() ? styles.FilledDropOutPage : styles.EmptyDropOutPage}` }>
+            <div className={ styles.DropOutPageBox }>
+                <nav className={ styles.ToRegistrationPageNav }>
+                    <SubmitButton id='bt2' description='Registrar desistente' onClick={ goToRegistrationPage }/>
+                </nav>
+                
+                <PageHeader title="Lista de desistentes" /> 
 
-            {
-                students.length == 0 && <StudentsPlaceholder placeholder='Não há desistentes cadastrados ainda!' />
-            }
-
-            <SubmitButton id='bt2' description='Registrar desistente' onClick={ goToRegisterPage }/>
+                {
+                    !hasStudents() && <StudentsPlaceholder placeholder='Não há desistentes cadastrados ainda!' />
+                }
+            </div>
         </div>
     )
 }

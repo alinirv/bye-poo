@@ -12,11 +12,13 @@ function RegistrationPage(){
     const goToDropOutPage = () => navigate('/Desistentes')
 
     return(
-        <section className={ registrationPageStyle.RegistrationPage }>
-            <PageHeader title='Registro de desistentes' />
-            <RegistrationForm />
-            <SubmitButton id="bt2" description="Lista de desistentes" onClick={ goToDropOutPage } />
-        </section>    
+        <div className={ registrationPageStyle.RegistrationPage }>
+            <div className={ registrationPageStyle.RegistrationFormBox }>
+                <PageHeader title='Registro de desistentes' />
+                <RegistrationForm />
+                <SubmitButton id="bt2" description="Lista de desistentes" onClick={ goToDropOutPage } />
+            </div>
+        </div>
     )
 }
 

@@ -1,4 +1,13 @@
 .RegistrationPage {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.RegistrationFormBox {
     width: 300px;
     padding: 2em;
     border-radius: 10px;
