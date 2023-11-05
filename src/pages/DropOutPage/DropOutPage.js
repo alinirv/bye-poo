@@ -1,13 +1,14 @@
-import { useNavigate } from "react-router";
-import styles from "../components/DropOut.module.css"
-import { SubmitButton } from "../../components/Form";
-import PageHeader from "../../components/PageHeader";
+import { useNavigate } from 'react-router'
+
+import styles from '../components/DropOut.module.css'
+
+import { SubmitButton } from '../../components/Form'
+import PageHeader from '../../components/PageHeader'
 
 function DropOutPage(){
     const navigate = useNavigate();
-    const goToRegisterPage = () => {
-        navigate('/');
-    }
+    
+    const goToRegisterPage = () => navigate('/')
 
     return(
         <div className={styles.MainBody}>
@@ -18,9 +19,9 @@ function DropOutPage(){
             <p>...</p>
             <p>...</p>
             <p>...</p>
-            <SubmitButton id="bt2" description="Registrar desistente" onClick={ goToRegisterPage }/>
+            <SubmitButton id='bt2' description='Registrar desistente' onClick={ goToRegisterPage }/>
         </div>
     )
 }
 
-export default DropOutPage;
+export default DropOutPage

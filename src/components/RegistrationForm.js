@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 import Form, { InputField, SelectionField, FormControl } from './Form'
 
 function RegistrationForm() {
@@ -20,13 +21,13 @@ function RegistrationForm() {
     return (
         <>
             <Form id='registrationForm'>    
-                <InputField id="txtName" label="Nome: " type="text" placeholder="Nome completo" value={ nameField }
+                <InputField id='txtName' label='Nome:' type='text' placeholder='Nome completo' value={ nameField }
                     onChange={ handleNameChange } required={ true }/>
 
-                <InputField id="txtId" label="Identificação: " type="text" placeholder="SC0000000" value={ idField }
-                    onChange={ handleIdChange } required={true} />
+                <InputField id='txtId' label='Identificação:' type='text' placeholder='SC0000000' value={ idField }
+                    onChange={ handleIdChange } required={ true } />
 
-                <SelectionField id="txtReason" label="Razão:" placeholder="Razão da desistência" options={[
+                <SelectionField id='txtReason' label='Razão:' placeholder='Razão da desistência' options={[
                     { value: 'other', description: 'Outra' }
                 ]} onChange={ handleReasonChange } required={ true }/>
 

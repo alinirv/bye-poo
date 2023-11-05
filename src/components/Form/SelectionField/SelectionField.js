@@ -7,7 +7,7 @@ function SelectionField({ id, label, placeholder, options, onChange, required })
 
     const handleSelectionChange = (event) => {
         const select = event.target
-        setSelectColor({ color: select.value == '' ? 'var(--placeholder-color' : 'black'})
+        setSelectColor({ color: select.value == '' ? 'var(--placeholder-color' : 'black' })
         onChange(event)
     }
 
