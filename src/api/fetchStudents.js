@@ -28,22 +28,25 @@ export const fetchAnswerToReason = (reason) => {
 
     switch (reason) {
         case 'Arreguei':
-            answer = 'Arrregou!'
+            answer = { type: 'text', message: 'Arregou' }
             break
         
         case 'O Prof. Lucas não vai pro céu':
-            answer = 'Espera pra ver DOO'
+            answer = { type: 'text', message: 'Espera para ver DOO!' }
             break
 
         case 'O que é i++?':
-            answer = '*Colocar figurinha do senhor incrível*'
+            answer = { type: 'image', message: '*Colocar a url para a figurinha do senhor incrível*' }
             break
 
         case 'Não estava muito bem':
         case 'Ansiedade':
         case 'Prefiro não responder':
         default:
-            answer = 'Seja lá qual foi o motivo, saiba que você é fod@! Não há nada que possa te parar, nem mesmo POO!'
+            answer = {
+                type: 'text',
+                message: 'Seja lá qual foi o motivo, saiba que você é fod@! Não há nada que possa te parar, nem mesmo POO!'
+            }
             break
     }
 

@@ -37,7 +37,7 @@ function RegistrationForm() {
             postStudent(student)
         
         setShowDialog(true)
-        setDialogMessage(fetchAnswerToReason(student.reason))
+        setDialogMessage(fetchAnswerToReason(student.reason).message)
     }
 
     useEffect(() => {
