@@ -2,12 +2,13 @@ import { useState } from 'react'
 import selectionFieldStyle from './SelectionField.module.css'
 import { PlaceholderOption, Option } from './Option'
 
-function SelectionField({ id, label, placeholder, options }) {
+function SelectionField({ id, label, placeholder, options, onChange }) {
     const [ selectColor, setSelectColor ] = useState({ color: "var(--placeholder-color)" })
 
     const handleSelectionChange = (event) => {
         const select = event.target
         setSelectColor({ color: select.value == '' ? 'var(--placeholder-color' : 'black'})
+        onChange(event)
     }
 
     return (
