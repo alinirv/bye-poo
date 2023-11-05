@@ -19,7 +19,16 @@ function DropOutPage(){
     const hasStudents = () => students.length > 0
 
     useEffect(() => {
-        setStudents(fetchAllStudents())
+        const getStudents = async () => {
+            try {
+                const foundStudents = await fetchAllStudents()
+                setStudents(foundStudents)
+            }
+            catch (error) {
+                console.error(error)
+            }
+        }
+        getStudents()
     }, [])
 
     return(

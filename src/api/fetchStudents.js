@@ -2,7 +2,7 @@ export const fetchOneStudent = (id) => {
     return { id: 'SC0000001', nome: 'Fulano', reason: 'Algum motivo' }
 }
 
-export const fetchAllStudents = () => {
+export const fetchAllStudents = async () => {
     const students = []
 
     for (let i = 1; i <= 10; i++) students.push(
