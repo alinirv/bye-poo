@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router'
 
-import styles from '../components/DropOut.module.css'
+import styles from './DropOut.module.css'
 
 import { SubmitButton } from '../../components/Form'
 import PageHeader from '../../components/PageHeader'
