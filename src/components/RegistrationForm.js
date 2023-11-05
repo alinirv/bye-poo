@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import Form, { InputField, SelectionField, FormControl } from './Form'
 import Dialog from './Dialog'
-import { fetchAnswerToReason, fetchReasons } from '../api/fetchStudents'
+import { fetchAnswerToReason, fetchOneStudent, fetchReasons, postStudent, putStudent } from '../api/fetchStudents'
 
 function RegistrationForm() {
     const [ nameField, setNameField ] = useState('')
@@ -30,6 +30,11 @@ function RegistrationForm() {
             return
 
         const student = { id: idField, name: nameField, reason: reason }
+
+        if (fetchOneStudent(student.id) !== null)
+            putStudent(student)
+        else
+            postStudent(student)
         
         setShowDialog(true)
         setDialogMessage(fetchAnswerToReason(student.reason))

@@ -50,3 +50,10 @@ export const fetchAnswerToReason = (reason) => {
     return answer
 }
 
+export const postStudent = (student) => {
+
+}
+
+export const putStudent = (student) => {
+
+}
