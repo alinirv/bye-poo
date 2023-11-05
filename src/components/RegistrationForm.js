@@ -5,12 +5,17 @@ function RegistrationForm() {
     const [ nameField, setNameField ] = useState('')
     const [ idField, setIdField ] = useState('')
     const [ reasonField, setReasonField ] = useState('')
+    const [ customReason, setCustomReason ] = useState('')
 
     const handleNameChange = (event) => setNameField(event.target.value)
 
     const handleIdChange = (event) => setIdField(event.target.value)
 
     const handleReasonChange = (event) => setReasonField(event.target.value)
+
+    const handleCustomReasonChange = (event) => setCustomReason(event.target.value)
+
+    const hasCustomReason = () => reasonField === 'other'
 
     return (
         <>
@@ -22,6 +27,10 @@ function RegistrationForm() {
                 <SelectionField id="txtReason" label="Razão" placeholder="Razão da desistência" options={[
                     { value: 'other', description: 'Outra' }
                 ]} onChange={ handleReasonChange } />
+                { hasCustomReason() && 
+                    <InputField id='customReason' type='text' placeholder='Outra razão' value={ customReason } 
+                        onChange={ handleCustomReasonChange }/> 
+                }
             </Form>
             <FormControl formId='registrationForm' buttonDescription='Arregou' />
         </>
