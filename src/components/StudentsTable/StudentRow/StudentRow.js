@@ -1,4 +1,7 @@
 import studentRowStyle from './StudentRow.module.css'
+import { deleteStudent } from '../../../api/fetchStudents';
+import { AiFillEdit } from "react-icons/ai";
+import { AiOutlineDelete } from "react-icons/ai";
 
 function StudentRow({ student, className }) {
     return (
@@ -7,8 +10,8 @@ function StudentRow({ student, className }) {
             <td>{ student.name }</td>
             <td>{ student.reason }</td>
             <td>
-                <button>Editar</button>
-                <button>Excluir</button>
+                <AiFillEdit></AiFillEdit>
+                <AiOutlineDelete></AiOutlineDelete>
             </td>
         </tr>
     )
