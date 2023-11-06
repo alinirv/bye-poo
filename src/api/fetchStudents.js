@@ -1,5 +1,5 @@
-export const fetchOneStudent = (id) => {
-    return { id: 'SC0000001', nome: 'Fulano', reason: 'Algum motivo' }
+export const fetchOneStudent = async (id) => {
+    return { status: 200, data: { id: 'SC0000001', nome: 'Fulano', reason: 'Algum motivo' }}
 }
 
 export const fetchAllStudents = async () => {
@@ -9,21 +9,21 @@ export const fetchAllStudents = async () => {
         { id: `SC${ i.toString().padStart(7, '0') }`, nome: `Aluno ${i}`, reason: 'Algum motivo'}
     )
 
-    return students
+    return { status: 200, data: students }
 }
 
-export const fetchReasons = () => {
-    return [
+export const fetchReasons = async () => {
+    return { status: 200, data: [
         { value: 'Arreguei', description: 'Arreguei'},
         { value: 'Não estava muito bem', description: 'Não estava muito bem'},
         { value: 'Ansiedade', description: '"When our momma sang us to sleep, but now we\'re stressed out"'},
         { value: 'Prefiro não responder', description: 'Prefino não responder'},
         { value: 'O que é i++?', description: 'O que é i++?'},
         { value: 'O Prof. Lucas não vai pro céu', description: 'O Prof. Lucas não vai pro céu'},
-    ]
+    ]}
 }
 
-export const fetchAnswerToReason = (reason) => {
+export const fetchAnswerToReason = async (reason) => {
     let answer
 
     switch (reason) {
@@ -52,13 +52,13 @@ export const fetchAnswerToReason = (reason) => {
             break
     }
 
-    return answer
+    return { status: 200, data: answer }
 }
 
-export const postStudent = (student) => {
-
+export const postStudent = async (student) => {
+    return { status: 201 }
 }
 
 export const putStudent = (student) => {
-
+    return { status: 200 }
 }

@@ -12,6 +12,7 @@ function RegistrationForm() {
     const [ showDialog, setShowDialog ] = useState(false)
     const [ dialogMessage, setDialogMessage ] = useState('')
     const [ reasons, setReasons ] = useState([])
+    const [ errorMessage, setErrorMessage ] = useState('')
 
     const handleNameChange = (event) => setNameField(event.target.value)
 
@@ -36,14 +37,45 @@ function RegistrationForm() {
         else
             postStudent(student)
         
-        setShowDialog(true)
-        setDialogMessage(fetchAnswerToReason(student.reason).message)
+
+        const getAnswer = async () => {
+            try {
+                const response = await fetchAnswerToReason(reason)
+
+                if (200 > response.status || response.status >= 400) {
+                    setErrorMessage(response.cause)
+                    return
+                }
+
+                setDialogMessage(response.data.message)
+                setShowDialog(true)
+            }
+            catch (error) {
+                setErrorMessage('Esqueceram de ligar o server!')
+            }
+        }
+
+        getAnswer()
     }
 
     useEffect(() => {
-        const fetchedReasons = fetchReasons()
-        fetchedReasons.push({ value: 'other', description: 'Outra' })
-        setReasons(fetchedReasons)
+        const getReasons = async () => {
+            try {
+                const response = await fetchReasons()
+
+                if (200 > response.status || response.status >= 400) {
+                    setErrorMessage(response.cause)
+                    return
+                }
+
+                response.data.push({ value: 'other', description: 'Outra' })
+                setReasons(response.data)
+            }
+            catch (error) {
+                setErrorMessage('Esqueceram de ligar o servidor!')
+            }
+        }
+        getReasons()
     }, [])
 
     return (

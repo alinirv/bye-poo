@@ -11,6 +11,7 @@ import { fetchAllStudents } from '../../api/fetchStudents'
 
 function DropOutPage(){
     const [ students, setStudents ] = useState([])
+    const [ errorMessage, setErrorMessage ] = useState('')
 
     const navigate = useNavigate();
     
@@ -21,11 +22,17 @@ function DropOutPage(){
     useEffect(() => {
         const getStudents = async () => {
             try {
-                const foundStudents = await fetchAllStudents()
-                setStudents(foundStudents)
+                const response = await fetchAllStudents()
+
+                if (200 > response.status || response.status >= 400) {
+                    setErrorMessage(response.cause)
+                    return
+                }
+
+                setStudents(response.data)
             }
-            catch (error) {
-                console.error(error)
+            catch {
+                setErrorMessage('Esqueceram de ligar o servidor!')
             }
         }
         getStudents()
@@ -45,6 +52,7 @@ function DropOutPage(){
                         <StudentsTable students={ students } />
                 }
             </div>
+            { errorMessage === '' && <p>{ errorMessage }</p> }
         </div>
     )
 }
