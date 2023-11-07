@@ -1,18 +1,29 @@
 import studentRowStyle from './StudentRow.module.css'
-import { deleteStudent } from '../../../api/fetchStudents';
+import { deleteStudent, putStudent } from '../../../api/fetchStudents';
 import { AiFillEdit } from "react-icons/ai";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useContext } from 'react';
 import { AppContext } from '../../../context/AppContext';
 import Notification from '../../Notification';
+import { useNavigate } from 'react-router';
 
 function StudentRow({ student, className }) {
-    const { errorMessage, setErrorMessage } = useContext(AppContext)
+    const { errorMessage, setErrorMessage, setEditingStudent } = useContext(AppContext)
+    const navigate = useNavigate();
     
     const handleDeleteStudent = async (event) => {
         try{
             const resposne = await deleteStudent(student.id);
             return resposne;
+        }catch(error){
+            return error;
+        }
+    }
+
+    const handleEditStudent = async (event) => {
+        try{            
+            setEditingStudent(student); 
+            navigate('/');
         }catch(error){
             return error;
         }
@@ -25,7 +36,7 @@ function StudentRow({ student, className }) {
                 <td>{ student.name }</td>
                 <td>{ student.reason }</td>
                 <td>
-                    <AiFillEdit></AiFillEdit>
+                    <AiFillEdit onClick={() => handleEditStudent(student)}></AiFillEdit>
                     <AiOutlineDelete onClick={() => handleDeleteStudent(student.id)}></AiOutlineDelete>
                 </td>
             </tr>
