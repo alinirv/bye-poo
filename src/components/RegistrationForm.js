@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import Form, { InputField, SelectionField, FormControl } from './Form'
 import Dialog from './Dialog'
 import { fetchAnswerToReason, fetchOneStudent, fetchReasons, postStudent, putStudent } from '../api/fetchStudents'
+import { AppContext } from '../context/AppContext'
 
 function RegistrationForm() {
     const [ nameField, setNameField ] = useState('')
@@ -13,6 +14,7 @@ function RegistrationForm() {
     const [ dialogMessage, setDialogMessage ] = useState('')
     const [ reasons, setReasons ] = useState([])
     const [ errorMessage, setErrorMessage ] = useState('')
+    const { editingStudent } = useContext(AppContext)
 
     const handleNameChange = (event) => setNameField(event.target.value)
 
@@ -76,6 +78,15 @@ function RegistrationForm() {
             }
         }
         getReasons()
+
+        if (!editingStudent)
+            return
+
+        const { id, name, reason } = editingStudent
+
+        setIdField(id)
+        setNameField(name)
+        setReasonField(reason)
     }, [])
 
     return (
@@ -89,7 +100,7 @@ function RegistrationForm() {
 
                 <SelectionField id='txtReason' label='Razão:' placeholder='Razão da desistência' options={
                     reasons
-                } onChange={ handleReasonChange } required={ true }/>
+                } onChange={ handleReasonChange } required={ true } selected={ reasonField }/>
 
                 { 
                     hasCustomReason() && 
