@@ -62,3 +62,7 @@ export const postStudent = async (student) => {
 export const putStudent = async (student) => {
     return { status: 200 }
 }
+
+export const deleteStudent = async (id) => {
+    return { status: 200 }
+}
