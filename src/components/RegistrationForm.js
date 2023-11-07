@@ -5,6 +5,7 @@ import Dialog from './Dialog'
 import { fetchAnswerToReason, fetchOneStudent, fetchReasons, postStudent, putStudent } from '../api/fetchStudents'
 import { AppContext } from '../context/AppContext'
 import Notification from './Notification'
+import Message from './Message'
 
 function RegistrationForm() {
     const [ nameField, setNameField ] = useState('')
@@ -49,7 +50,7 @@ function RegistrationForm() {
                     return
                 }
 
-                setDialogMessage(response.data.message)
+                setDialogMessage(response.data)
                 setShowDialog(true)
             }
             catch (error) {
@@ -109,7 +110,9 @@ function RegistrationForm() {
                 }
             </Form>
             <FormControl formId='registrationForm' buttonDescription='Arregou' onSubmit={ handleSubmit } />
-            <Dialog isActive={ showDialog } setIsActive={ setShowDialog } >{ dialogMessage }</Dialog>
+            <Dialog isActive={ showDialog } setIsActive={ setShowDialog } >
+                <Message message={ dialogMessage } />
+            </Dialog>
             { errorMessage && <Notification>{ errorMessage }</Notification> }
         </>
     )
