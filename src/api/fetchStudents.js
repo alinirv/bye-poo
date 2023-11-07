@@ -77,7 +77,25 @@ export const postStudent = async (student) => {
 }
 
 export const putStudent = async (student) => {
-    return { status: 200 }
+    if (!existsStudent(student.id))
+        return { status: 404, cause: `Não existe um desistente com id ${student.id}` }
+    
+    const notification = validateStudent(student)
+
+    if (notification)
+        return { status: 400, cause: notification }
+
+    try {
+        await fetch(`http://localhost:3500/student/${student.id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(student)
+        })
+        return { status: 200 }
+    }
+    catch (error) {
+        return { status: 500, cause: 'Esqueceram de ligar o servidor!' }
+    }
 }
 
 export const deleteStudent = async (id) => {
