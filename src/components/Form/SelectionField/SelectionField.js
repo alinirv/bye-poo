@@ -11,8 +11,6 @@ function SelectionField({ id, label, placeholder, options, onChange, required, s
         onChange(event)
     }
 
-    const isSelected = (value) => value === selected
-
     return (
         <div className={ selectionFieldStyle.SelectionField }>
             <label htmlFor={ id }>{ label }</label>
@@ -22,16 +20,12 @@ function SelectionField({ id, label, placeholder, options, onChange, required, s
                 name={ id } style={ selectColor } 
                 onChange={ handleSelectionChange }
                 required={ required }
+                value={ selected }
             >
                 <PlaceholderOption placeholder={ placeholder } />
                 { 
                     options.map((option, index) => 
-                        <Option 
-                            key={ index + 1 } 
-                            value={ option.value } 
-                            description={ option.description } 
-                            selected={ isSelected(option.value) }
-                        />
+                        <Option key={ index + 1 } value={ option.value } description={ option.description } />
                     )
                 }
             </select>
