@@ -72,12 +72,15 @@ function RegistrationForm() {
             try {
                 const response = await fetchReasons()
 
-                if (200 > response.status || response.status >= 400) {
+                if (response.status >= 400) {
                     setErrorMessage(response.cause)
                     return
                 }
 
-                response.data.push({ value: 'other', description: 'Outra' })
+                response.data.push({ id: 0, reason: 'Outra', answer: { 
+                    type: "text", 
+                    message: "Seja lá qual for o motivo, saiba que você é fod@! Nem mesmo POO pode te parar!" 
+                }})
                 setReasons(response.data)
             }
             catch (error) {

@@ -13,46 +13,33 @@ export const fetchAllStudents = async () => {
 }
 
 export const fetchReasons = async () => {
-    return { status: 200, data: [
-        { value: 'Arreguei', description: 'Arreguei'},
-        { value: 'Não estava muito bem', description: 'Não estava muito bem'},
-        { value: 'Ansiedade', description: '"When our momma sang us to sleep, but now we\'re stressed out"'},
-        { value: 'Prefiro não responder', description: 'Prefino não responder'},
-        { value: 'O que é i++?', description: 'O que é i++?'},
-        { value: 'O Prof. Lucas não vai pro céu', description: 'O Prof. Lucas não vai pro céu'},
-    ]}
+    try {
+        const response = await fetch('http://localhost:3500/reason')
+        const reasons = await response.json()
+        return { status: 200, data: reasons }
+    }
+    catch (error) {
+        return { status: 500, cause: 'Esqueceram de ligar o servidor!' }
+    }
 }
 
 export const fetchAnswerToReason = async (reason) => {
-    let answer
+    if (!existsReason(reason))
+        return { status: 200, data: { type: "text", message: "Pois saiba que voce fod@! Nada pode te parar, nem mesmo POO! Forças!" } }
 
-    switch (reason) {
-        case 'Arreguei':
-            answer = { type: 'text', message: 'Arregou' }
-            break
+    try {
+        const response = await fetchReasons()
         
-        case 'O Prof. Lucas não vai pro céu':
-            answer = { type: 'text', message: 'Espera para ver DOO!' }
-            break
+        if (response.status >= 400)
+            return response
 
-        case 'O que é i++?':
-            answer = { type: 'image', message: '*Colocar a url para a figurinha do senhor incrível*' }
-            break
+        const answer = response.data.filter(r => r.reason === reason)[0].answer
 
-        case 'Não estava muito bem':
-        case 'Ansiedade':
-            answer = { type: 'text', message: 'Pois saiba que você é fod@! Não há nada que possa te parar, nem mesmo POO!' }
-            break
-        case 'Prefiro não responder':
-        default:
-            answer = {
-                type: 'text',
-                message: 'Seja lá qual foi o motivo, saiba que você é fod@! Não há nada que possa te parar, nem mesmo POO!'
-            }
-            break
+        return { status: 200, data:  answer }
     }
-
-    return { status: 200, data: answer }
+    catch (error) {
+        return { status: 500, cause: 'Esqueceram de ligar o servidor!' }
+    }
 }
 
 export const postStudent = async (student) => {
@@ -115,6 +102,10 @@ const validateStudent = (student) => {
     return notification
 }
 
-export const existsStudent = (id) => {
+export const existsStudent = (reason) => {
     return false
+}
+
+export const existsReason = (id) => {
+    return true
 }

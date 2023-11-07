@@ -19,7 +19,53 @@
       "id": "SC0000003",
       "name": "Alguem ae",
       "reason": "O Prof. Lucas não vai pro céu"
+    },
+    {
+      "id": "SC2222222",
+      "name": "Alguem não importante",
+      "reason": "O Prof. Lucas não vai pro céu"
+    },
+    {
+      "id": "SC0000012",
+      "name": "Alguem não importante",
+      "reason": "When our momma sang us to sleep, but now we're stressed out"
     }
   ],
-  "reason": []
+  "reason": [
+    {
+      "reason": "Arreguei",
+      "answer": {
+        "type": "text",
+        "message": "Arregou"
+      }
+    },
+    {
+      "reason": "O Prof. Lucas não vai pro céu",
+      "answer": {
+        "type": "text",
+        "message": "Espera para ver DOO"
+      }
+    },
+    {
+      "reason": "O que é i++?",
+      "answer": {
+        "type": "image",
+        "message": "../assets/mr_incredible.png"
+      }
+    },
+    {
+      "reason": "Não estava muito bem",
+      "answer": {
+        "type": "text",
+        "message": "Pois saiba que você é fod@! Não há nada que possa te parar, nem mesmo POO!"
+      }
+    },
+    {
+      "reason": "When our momma sang us to sleep, but now we're stressed out",
+      "answer": {
+        "type": "text",
+        "message": "Pois saiba que você é fod@! Não há nada que possa te parar, nem mesmo POO!"
+      }
+    }
+  ]
 }

@@ -25,7 +25,7 @@ function SelectionField({ id, label, placeholder, options, onChange, required, s
                 <PlaceholderOption placeholder={ placeholder } />
                 { 
                     options.map((option, index) => 
-                        <Option key={ index + 1 } value={ option.value } description={ option.description } />
+                        <Option key={ index + 1 } value={ option.reason } description={ option.reason } />
                     )
                 }
             </select>
