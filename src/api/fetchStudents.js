@@ -12,6 +12,16 @@ export const fetchAllStudents = async () => {
     return { status: 200, data: students }
 }
 
+const handleDeleteStudent = async (event) => {
+    try {
+        const response = await deleteStudent(id)
+        
+    }
+    catch (error) {
+        return error;
+    }
+}
+
 export const fetchReasons = async () => {
     return { status: 200, data: [
         { value: 'Arreguei', description: 'Arreguei'},
@@ -60,5 +70,9 @@ export const postStudent = async (student) => {
 }
 
 export const putStudent = (student) => {
+    return { status: 200 }
+}
+
+export const deleteStudent = async (id) => {
     return { status: 200 }
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import dialogStyle from './Dialog.module.css'
+import { BiX } from "react-icons/bi";
 
 function Dialog({ children, isActive, setIsActive }) {
     const closeDialog = () => setIsActive(false)
@@ -11,7 +12,7 @@ function Dialog({ children, isActive, setIsActive }) {
         <div className={ dialogStyle.DialogBackground } onClick={ closeDialog } >
             <div className={ dialogStyle.Dialog }>
                 <nav className={ dialogStyle.DialogNav }>
-                    <button onClick={ closeDialog } >Sair</button>
+                    <BiX onClick = {closeDialog}></BiX>
                 </nav>
                 <div className={ dialogStyle.DialogMessage }>
                     { children }
