@@ -104,7 +104,19 @@ export const putStudent = async (student) => {
 }
 
 export const deleteStudent = async (id) => {
-    return { status: 200 }
+    if (!existsStudent(id)){
+        return { status: 404, cause: `Não existe um desistente com id ${id}` }}
+
+    try {
+        await fetch(`http://localhost:3500/student/${id}`, {
+            method: 'DELETE'
+        })
+        window.location.reload()
+        return { status: 200 }
+    }
+    catch (error) {
+        return { status: 500, cause: 'Esqueceram de ligar o servidor!' }
+    }
 }
 
 const validateStudent = (student) => {
