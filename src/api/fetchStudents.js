@@ -1,10 +1,7 @@
 export const fetchOneStudent = async (id) => {
     try {
-        const response = await fetch(`http://localhost:3500/student/${id}`)
-        const student = await response.json()
-        const reasons = await fetchReasons()
-        const reason = reasons.data.filter(r => r.reason === student.reason)[0]
-        student.reason = reason
+        const students = await fetchAllStudents()
+        const student = students.data.filter(s => s.id === id)[0]
 
         return { status: 200, data: student }
     }
