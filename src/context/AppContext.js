@@ -5,9 +5,10 @@ export const AppContext = createContext({})
 
 function AppContextProvider({ children }) {
     const [ editingStudent, setEditingStudent ] = useState()
+    const [ errorMessage, setErrorMessage ] = useState('')
 
     return (
-        <AppContext.Provider value={{ editingStudent, setEditingStudent }} >
+        <AppContext.Provider value={{ editingStudent, setEditingStudent, errorMessage, setErrorMessage }} >
             { children }
         </AppContext.Provider>
     )

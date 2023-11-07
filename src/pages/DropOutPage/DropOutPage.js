@@ -4,14 +4,16 @@ import styles from './DropOut.module.css'
 
 import { SubmitButton } from '../../components/Form'
 import PageHeader from '../../components/PageHeader'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import StudentsPlaceholder from '../../components/StudentsPlaceholder'
 import StudentsTable from '../../components/StudentsTable'
 import { fetchAllStudents } from '../../api/fetchStudents'
+import Notification from '../../components/Notification'
+import { AppContext } from '../../context/AppContext'
 
 function DropOutPage(){
     const [ students, setStudents ] = useState([])
-    const [ errorMessage, setErrorMessage ] = useState('')
+    const { errorMessage, setErrorMessage } = useContext(AppContext)
 
     const navigate = useNavigate();
     
@@ -52,7 +54,7 @@ function DropOutPage(){
                         <StudentsTable students={ students } />
                 }
             </div>
-            { errorMessage === '' && <p>{ errorMessage }</p> }
+            { errorMessage && <Notification>{ errorMessage }</Notification> }
         </div>
     )
 }

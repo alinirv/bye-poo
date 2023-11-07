@@ -4,6 +4,7 @@ import Form, { InputField, SelectionField, FormControl } from './Form'
 import Dialog from './Dialog'
 import { fetchAnswerToReason, fetchOneStudent, fetchReasons, postStudent, putStudent } from '../api/fetchStudents'
 import { AppContext } from '../context/AppContext'
+import Notification from './Notification'
 
 function RegistrationForm() {
     const [ nameField, setNameField ] = useState('')
@@ -13,8 +14,7 @@ function RegistrationForm() {
     const [ showDialog, setShowDialog ] = useState(false)
     const [ dialogMessage, setDialogMessage ] = useState('')
     const [ reasons, setReasons ] = useState([])
-    const [ errorMessage, setErrorMessage ] = useState('')
-    const { editingStudent } = useContext(AppContext)
+    const { editingStudent, errorMessage, setErrorMessage } = useContext(AppContext)
 
     const handleNameChange = (event) => setNameField(event.target.value)
 
@@ -110,6 +110,7 @@ function RegistrationForm() {
             </Form>
             <FormControl formId='registrationForm' buttonDescription='Arregou' onSubmit={ handleSubmit } />
             <Dialog isActive={ showDialog } setIsActive={ setShowDialog } >{ dialogMessage }</Dialog>
+            { errorMessage && <Notification>{ errorMessage }</Notification> }
         </>
     )
 }
