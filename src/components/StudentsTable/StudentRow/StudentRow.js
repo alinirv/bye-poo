@@ -8,6 +8,15 @@ import Notification from '../../Notification';
 
 function StudentRow({ student, className }) {
     const { errorMessage, setErrorMessage } = useContext(AppContext)
+    
+    const handleDeleteStudent = async (event) => {
+        try{
+            const resposne = await deleteStudent(student.id);
+            return resposne;
+        }catch(error){
+            return error;
+        }
+    }
 
     return (
         <>
@@ -17,7 +26,7 @@ function StudentRow({ student, className }) {
                 <td>{ student.reason }</td>
                 <td>
                     <AiFillEdit></AiFillEdit>
-                    <AiOutlineDelete></AiOutlineDelete>
+                    <AiOutlineDelete onClick={() => handleDeleteStudent(student.id)}></AiOutlineDelete>
                 </td>
             </tr>
             { errorMessage && <Notification>{ errorMessage }</Notification> }
