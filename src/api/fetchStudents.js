@@ -12,21 +12,23 @@ export const fetchOneStudent = async (id) => {
 }
 
 export const fetchAllStudents = async () => {
-    const students = []
-
-    for (let i = 1; i <= 10; i++) students.push({ 
-        id: `SC${ i.toString().padStart(7, '0') }`, 
-        name: `Aluno ${i}`,
-        reason: {
-            reason: "Arreguei",
-            answer: {
-                type: "text",
-                message: "Arregou"
-            }
+    try {
+        const response = await fetch('http://localhost:3500/student')
+        const students = await response.json()
+        const reasons = await fetchReasons()
+        
+        for (let i = 0; i < students.length; i++) {
+            const student = students[i]
+            const reason = reasons.data.filter(r => r.reason === student.reason)[0]
+            student.reason = reason
+            students[i] = student
         }
-    })
 
-    return { status: 200, data: students }
+        return { status: 200, data: students }
+    }
+    catch (error) {
+        return { status: 500, cause: 'Esqueceram de ligar o servidor!' }
+    }
 }
 
 export const fetchReasons = async () => {
