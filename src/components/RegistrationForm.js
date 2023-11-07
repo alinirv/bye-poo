@@ -34,21 +34,6 @@ function RegistrationForm() {
             return
 
         const student = { id: idField, name: nameField, reason: reason }
-
-        const postOrPutStudent = async () => {
-            let response
-
-            if (editingStudent)
-                response = await putStudent(student)
-            else 
-                response = await postStudent(student)
-
-            if (response.status < 400)
-                return
-
-            setErrorMessage(response.data)
-        }
-        postOrPutStudent()
         
 
         const getAnswer = async () => {
@@ -62,7 +47,24 @@ function RegistrationForm() {
             setDialogMessage(response.data)
             setShowDialog(true)
         }
-        getAnswer()
+
+        const postOrPutStudent = async () => {
+            let response
+
+            if (editingStudent)
+                response = await putStudent(student)
+            else 
+                response = await postStudent(student)
+
+            if (response.status < 400) {
+                setErrorMessage('')
+                getAnswer()
+                return
+            }
+
+            setErrorMessage(response.cause)
+        }
+        postOrPutStudent()
     }
 
     useEffect(() => {

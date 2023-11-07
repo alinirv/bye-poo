@@ -1,0 +1,25 @@
+{
+  "student": [
+    {
+      "id": "SC00000000",
+      "name": "Alguem ae",
+      "reason": "Arreguei"
+    },
+    {
+      "id": "SC0000001",
+      "name": "Alguem ae",
+      "reason": "O Prof. Lucas não vai pro céu"
+    },
+    {
+      "id": "SC0000002",
+      "name": "Alguem ae",
+      "reason": "O Prof. Lucas não vai pro céu"
+    },
+    {
+      "id": "SC0000003",
+      "name": "Alguem ae",
+      "reason": "O Prof. Lucas não vai pro céu"
+    }
+  ],
+  "reason": []
+}
