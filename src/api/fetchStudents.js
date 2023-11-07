@@ -1,14 +1,16 @@
 export const fetchOneStudent = async (id) => {
-    return { status: 200, data: { 
-        id: 'SC0000001', 
-        name: 'Fulano', 
-        reason: {
-            reason: "Arreguei",
-            answer: {
-                type: "text",
-                message: "Arregou"
-        }
-    }}}
+    try {
+        const response = await fetch(`http://localhost:3500/student/${id}`)
+        const student = await response.json()
+        const reasons = await fetchReasons()
+        const reason = reasons.data.filter(r => r.reason === student.reason)[0]
+        student.reason = reason
+
+        return { status: 200, data: student }
+    }
+    catch (error) {
+        return { status: 500, cause: 'Esqueceram de ligar o servidor!' }
+    }
 }
 
 export const fetchAllStudents = async () => {
