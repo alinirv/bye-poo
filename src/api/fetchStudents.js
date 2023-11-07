@@ -120,8 +120,8 @@ const validateStudent = (student) => {
     return notification
 }
 
-export const existsStudent = (id) => {
-    return false
+export const existsStudent = async (id) => {
+    return await fetchOneStudent(id).data !== undefined
 }
 
 export const existsReason = (reason) => {
