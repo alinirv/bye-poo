@@ -22,22 +22,16 @@ function DropOutPage(){
     const hasStudents = () => students.length > 0
 
     useEffect(() => {
-        const getStudents = async () => {
-            try {
-                const response = await fetchAllStudents()
+        (async () => {
+            const response = await fetchAllStudents()
 
-                if (200 > response.status || response.status >= 400) {
-                    setErrorMessage(response.cause)
-                    return
-                }
+            if (response.status >= 400) {
+                setErrorMessage(response.cause)
+                return
+            }
 
-                setStudents(response.data)
-            }
-            catch {
-                setErrorMessage('Esqueceram de ligar o servidor!')
-            }
-        }
-        getStudents()
+            setStudents(response.data)
+        })()
     }, [])
 
     return(

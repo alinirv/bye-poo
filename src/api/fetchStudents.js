@@ -59,6 +59,6 @@ export const postStudent = async (student) => {
     return { status: 201 }
 }
 
-export const putStudent = (student) => {
+export const putStudent = async (student) => {
     return { status: 200 }
 }

@@ -35,29 +35,33 @@ function RegistrationForm() {
 
         const student = { id: idField, name: nameField, reason: reason }
 
-        if (fetchOneStudent(student.id) !== null)
-            putStudent(student)
-        else
-            postStudent(student)
+        const postOrPutStudent = async () => {
+            let response
+
+            if (editingStudent)
+                response = await putStudent(student)
+            else 
+                response = await postStudent(student)
+
+            if (response.status < 400)
+                return
+
+            setErrorMessage(response.data)
+        }
+        postOrPutStudent()
         
 
         const getAnswer = async () => {
-            try {
-                const response = await fetchAnswerToReason(reason)
+            const response = await fetchAnswerToReason(reason)
 
-                if (200 > response.status || response.status >= 400) {
-                    setErrorMessage(response.cause)
-                    return
-                }
+            if (response.status >= 400) {
+                setErrorMessage(response.cause)
+                return
+            }
 
-                setDialogMessage(response.data)
-                setShowDialog(true)
-            }
-            catch (error) {
-                setErrorMessage('Esqueceram de ligar o server!')
-            }
+            setDialogMessage(response.data)
+            setShowDialog(true)
         }
-
         getAnswer()
     }
 
