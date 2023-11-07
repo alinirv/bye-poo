@@ -34,7 +34,7 @@ function StudentRow({ student, className }) {
             <tr className={ `${studentRowStyle.StudentRow} ${className || ''}` }>
                 <td>{ student.id }</td>
                 <td>{ student.name }</td>
-                <td>{ student.reason }</td>
+                <td>{ student.reason.reason }</td>
                 <td>
                     <AiFillEdit onClick={() => handleEditStudent(student)}></AiFillEdit>
                     <AiOutlineDelete onClick={() => handleDeleteStudent(student.id)}></AiOutlineDelete>

@@ -1,13 +1,30 @@
 export const fetchOneStudent = async (id) => {
-    return { status: 200, data: { id: 'SC0000001', name: 'Fulano', reason: 'Algum motivo' }}
+    return { status: 200, data: { 
+        id: 'SC0000001', 
+        name: 'Fulano', 
+        reason: {
+            reason: "Arreguei",
+            answer: {
+                type: "text",
+                message: "Arregou"
+        }
+    }}}
 }
 
 export const fetchAllStudents = async () => {
     const students = []
 
-    for (let i = 1; i <= 10; i++) students.push(
-        { id: `SC${ i.toString().padStart(7, '0') }`, name: `Aluno ${i}`, reason: 'Algum motivo'}
-    )
+    for (let i = 1; i <= 10; i++) students.push({ 
+        id: `SC${ i.toString().padStart(7, '0') }`, 
+        name: `Aluno ${i}`,
+        reason: {
+            reason: "Arreguei",
+            answer: {
+                type: "text",
+                message: "Arregou"
+            }
+        }
+    })
 
     return { status: 200, data: students }
 }

@@ -96,7 +96,7 @@ function RegistrationForm() {
 
         setIdField(id)
         setNameField(name)
-        setReasonField(reason)
+        setReasonField(reason.reason)
     }, [])
 
     return (
