@@ -29,6 +29,11 @@
       "id": "SC0000012",
       "name": "Alguem não importante",
       "reason": "When our momma sang us to sleep, but now we're stressed out"
+    },
+    {
+      "id": "SC0004516",
+      "name": "Aluno h",
+      "reason": "O que é i++?"
     }
   ],
   "reason": [
@@ -50,7 +55,7 @@
       "reason": "O que é i++?",
       "answer": {
         "type": "image",
-        "message": "../assets/mr_incredible.png"
+        "message": "/../../assets/Mr_incredible.png"
       }
     },
     {

@@ -34,7 +34,6 @@ function RegistrationForm() {
             return
 
         const student = { id: idField, name: nameField, reason: reason }
-        
 
         const getAnswer = async () => {
             const response = await fetchAnswerToReason(reason)
