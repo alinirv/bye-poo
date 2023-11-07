@@ -34,6 +34,11 @@
       "id": "SC0004516",
       "name": "Aluno h",
       "reason": "O que é i++?"
+    },
+    {
+      "id": "SC0004511",
+      "name": "Aluno h",
+      "reason": "O que é i++?"
     }
   ],
   "reason": [
@@ -55,7 +60,7 @@
       "reason": "O que é i++?",
       "answer": {
         "type": "image",
-        "message": "/../../assets/Mr_incredible.png"
+        "message": "../../../assets/Mr_incredible.png"
       }
     },
     {
