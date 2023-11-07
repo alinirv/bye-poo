@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import Form, { InputField, SelectionField, FormControl } from './Form'
 import Dialog from './Dialog'
 import { fetchAnswerToReason, fetchOneStudent, fetchReasons, postStudent, putStudent } from '../api/fetchStudents'
+import { AppContext } from '../context/AppContext'
+import Notification from './Notification'
+import Message from './Message'
 
 function RegistrationForm() {
     const [ nameField, setNameField ] = useState('')
@@ -12,7 +15,7 @@ function RegistrationForm() {
     const [ showDialog, setShowDialog ] = useState(false)
     const [ dialogMessage, setDialogMessage ] = useState('')
     const [ reasons, setReasons ] = useState([])
-    const [ errorMessage, setErrorMessage ] = useState('')
+    const { editingStudent, errorMessage, setErrorMessage } = useContext(AppContext)
 
     const handleNameChange = (event) => setNameField(event.target.value)
 
@@ -32,29 +35,33 @@ function RegistrationForm() {
 
         const student = { id: idField, name: nameField, reason: reason }
 
-        if (fetchOneStudent(student.id) !== null)
-            putStudent(student)
-        else
-            postStudent(student)
+        const postOrPutStudent = async () => {
+            let response
+
+            if (editingStudent)
+                response = await putStudent(student)
+            else 
+                response = await postStudent(student)
+
+            if (response.status < 400)
+                return
+
+            setErrorMessage(response.data)
+        }
+        postOrPutStudent()
         
 
         const getAnswer = async () => {
-            try {
-                const response = await fetchAnswerToReason(reason)
+            const response = await fetchAnswerToReason(reason)
 
-                if (200 > response.status || response.status >= 400) {
-                    setErrorMessage(response.cause)
-                    return
-                }
+            if (response.status >= 400) {
+                setErrorMessage(response.cause)
+                return
+            }
 
-                setDialogMessage(response.data.message)
-                setShowDialog(true)
-            }
-            catch (error) {
-                setErrorMessage('Esqueceram de ligar o server!')
-            }
+            setDialogMessage(response.data)
+            setShowDialog(true)
         }
-
         getAnswer()
     }
 
@@ -76,6 +83,15 @@ function RegistrationForm() {
             }
         }
         getReasons()
+
+        if (!editingStudent)
+            return
+
+        const { id, name, reason } = editingStudent
+
+        setIdField(id)
+        setNameField(name)
+        setReasonField(reason)
     }, [])
 
     return (
@@ -89,7 +105,7 @@ function RegistrationForm() {
 
                 <SelectionField id='txtReason' label='Razão:' placeholder='Razão da desistência' options={
                     reasons
-                } onChange={ handleReasonChange } required={ true }/>
+                } onChange={ handleReasonChange } required={ true } selected={ reasonField }/>
 
                 { 
                     hasCustomReason() && 
@@ -98,7 +114,10 @@ function RegistrationForm() {
                 }
             </Form>
             <FormControl formId='registrationForm' buttonDescription='Arregou' onSubmit={ handleSubmit } />
-            <Dialog isActive={ showDialog } setIsActive={ setShowDialog } >{ dialogMessage }</Dialog>
+            <Dialog isActive={ showDialog } setIsActive={ setShowDialog } >
+                <Message message={ dialogMessage } />
+            </Dialog>
+            { errorMessage && <Notification>{ errorMessage }</Notification> }
         </>
     )
 }

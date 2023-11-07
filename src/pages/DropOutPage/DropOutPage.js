@@ -4,14 +4,16 @@ import styles from './DropOut.module.css'
 
 import { SubmitButton } from '../../components/Form'
 import PageHeader from '../../components/PageHeader'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import StudentsPlaceholder from '../../components/StudentsPlaceholder'
 import StudentsTable from '../../components/StudentsTable'
 import { fetchAllStudents } from '../../api/fetchStudents'
+import Notification from '../../components/Notification'
+import { AppContext } from '../../context/AppContext'
 
 function DropOutPage(){
     const [ students, setStudents ] = useState([])
-    const [ errorMessage, setErrorMessage ] = useState('')
+    const { errorMessage, setErrorMessage } = useContext(AppContext)
 
     const navigate = useNavigate();
     
@@ -20,22 +22,16 @@ function DropOutPage(){
     const hasStudents = () => students.length > 0
 
     useEffect(() => {
-        const getStudents = async () => {
-            try {
-                const response = await fetchAllStudents()
+        (async () => {
+            const response = await fetchAllStudents()
 
-                if (200 > response.status || response.status >= 400) {
-                    setErrorMessage(response.cause)
-                    return
-                }
+            if (response.status >= 400) {
+                setErrorMessage(response.cause)
+                return
+            }
 
-                setStudents(response.data)
-            }
-            catch {
-                setErrorMessage('Esqueceram de ligar o servidor!')
-            }
-        }
-        getStudents()
+            setStudents(response.data)
+        })()
     }, [])
 
     return(
@@ -52,7 +48,7 @@ function DropOutPage(){
                         <StudentsTable students={ students } />
                 }
             </div>
-            { errorMessage === '' && <p>{ errorMessage }</p> }
+            { errorMessage && <Notification>{ errorMessage }</Notification> }
         </div>
     )
 }
