@@ -3,7 +3,7 @@
     min-height: 100vh;
     max-height: max-content;
     
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
