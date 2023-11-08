@@ -3,9 +3,12 @@ Site that registers POO students who gave up , for didactic purposes
 
 # initialing a server to by-poo
 on terminal
-  npm install
+  <br> 
+  <code>npm install</code>
+  <br>
 after the install 
-  npm start
+  <br>
+  <code>npm start</code>
 
 # in another terminal 
-  npx json-server -p 3500 -w data/db.json
+  <code>npx json-server -p 3500 -w data/db.json</code>
