@@ -3,7 +3,10 @@ import dialogStyle from './Dialog.module.css'
 import { BiX } from "react-icons/bi";
 
 function Dialog({ children, isActive, setIsActive }) {
-    const closeDialog = () => setIsActive(false)
+    const closeDialog = () => {
+        setIsActive(false)
+        window.location.href = "/Desistentes"
+    }
 
     if (!isActive)
         return <></>
