@@ -1,14 +1,9 @@
 {
   "student": [
     {
-      "id": "SC00000000",
-      "name": "Nome completo",
-      "reason": "Arreguei"
-    },
-    {
       "id": "SC0000001",
       "name": "Alguem ae",
-      "reason": "O Prof. Lucas não vai pro céu"
+      "reason": "O que é i++?"
     },
     {
       "id": "SC0000002",
