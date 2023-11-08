@@ -63,7 +63,7 @@ export const fetchAnswerToReason = async (reason) => {
 export const postStudent = async (student) => {
     const notification = validateStudent(student)
 
-    if (existsStudent(student.id))
+    if (await existsStudent(student.id))
         return { status: 400, cause: `Já existe um desistente com o id ${student.id}` }
     if (notification)
         return { status: 400, cause: notification }
@@ -82,7 +82,7 @@ export const postStudent = async (student) => {
 }
 
 export const putStudent = async (student) => {
-    if (!existsStudent(student.id))
+    if (!(await existsStudent(student.id)))
         return { status: 404, cause: `Não existe um desistente com id ${student.id}` }
     
     const notification = validateStudent(student)
@@ -104,7 +104,7 @@ export const putStudent = async (student) => {
 }
 
 export const deleteStudent = async (id) => {
-    if (!existsStudent(id)){
+    if (!(await existsStudent(id))){
         return { status: 404, cause: `Não existe um desistente com id ${id}` }}
 
     try {
@@ -133,7 +133,8 @@ const validateStudent = (student) => {
 }
 
 export const existsStudent = async (id) => {
-    return await fetchOneStudent(id).data !== undefined
+    const student = (await fetchOneStudent(id)).data
+    return student !== undefined
 }
 
 export const existsReason = (reason) => {
